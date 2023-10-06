@@ -9,15 +9,17 @@ function App() {
   const [items, setItems]=useState(menu);
   // const [cat, setCat]=useState([])
 
-  const filteritem=(catagory)=>{
-    if(catagory==='all'){
-      setItems(menu);
-      return ;
-    }
-    const newitems=menu.filter((item)=>item.category===catagory);
-    setItems(newitems);
+// instead of filtering here we can filter in catlist component
 
-  }
+  // const filteritem=(catagory)=>{
+  //   if(catagory==='all'){
+  //     setItems(menu);
+  //     return ;
+  //   }
+  //   const newitems=menu.filter((item)=>item.category===catagory);
+  //   setItems(newitems);
+
+  // }
 
   const set=new Set(menu.map((menuu)=>menuu.category));
   const arr= ['all', ...set];
@@ -26,7 +28,7 @@ function App() {
   return (
     <div className="App">
       <div >
-      <Catlist filteritem={filteritem} arr={arr}/>
+      <Catlist  arr={arr} setItems={setItems}/>
        {items.map((item)=><Menucomp item={item}  />)}
       </div>
     </div>
